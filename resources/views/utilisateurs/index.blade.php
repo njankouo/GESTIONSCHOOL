@@ -132,27 +132,5 @@
             );
         });
     </script>
-    <script>
-        document.getElementById('test').onclick = function() {
-            window.location.hash = "#bottom-sheet";
-        };
-    </script>
-    <script type="text/javascript">
-        $.fn.editable.defaults.mode = 'inline';
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-        });
-
-        $('.update').editable({
-            url: "{{ route('users.update') }}",
-            type: 'text',
-            pk: 1,
-            nom: 'nom',
-            title: 'Enter name'
-        });
-    </script>
 
 @stop

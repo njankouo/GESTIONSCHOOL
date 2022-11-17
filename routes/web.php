@@ -3,14 +3,16 @@
 use App\Models\Annee;
 use App\Models\Salle;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CourController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CongeController;
-use App\Http\Controllers\CycleController;
 //use App\Htpp\Controllers\ProfileController;
+use App\Http\Controllers\CycleController;
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\SalleController;
+use App\Http\Controllers\ExamenController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\ProfilController;
@@ -66,6 +68,10 @@ Route::get('notes',[NoteController::class,'index'])->name('note.index');
 Route::get('/contrat',[ContratController::class,'index'])->name('contrat.index');
 Route::get('/print/pdf',[EleveController::class,'print'])->name('print.eleve');
 Route::get('/changeStatus', [Annee_scolaireController::class,'changeStatus'])->name('toggle.find');
+Route::get('cours/liste',[CourController::class,'index'])->name('cours.liste');
+ROUTE::get('edit/cours/{id}',[CourController::class,'edit'])->name('edit.cour');
+ROUTE::get('examen',[ExamenController::class,'index'])->name('index.examen');
+ROUTE::get('note/eleve/{id}',[NoteController::class,'add_note'])->name('note.eleve');
 
 Route::post('ajouter/cycle',[SalleController::class,'add'])->name('add.cycle');
 Route::post('/save/eleve',[EleveController::class,'save'])->name('save.eleve');
@@ -83,12 +89,14 @@ Route::post('send/mail',[MailController::class ,'save'])->name('send.mail');
 Route::POST('contrat',[ContratController::class,'save'])->name('save.contrat');
 Route::post('Contrat', [ContratController::class, 'update'])->name('update.contrat');
 Route::POST('utilisateurs',[UserController::class,'modifier'])->name('users.update');
+ROUTE::POST('save/cours',[CourController::class,'save'])->name('save.cour');
+ROUTE::post('note/eleve',[NoteController::class,'save'])->name('add.note');
 
 Route::put('/edit/elev/{eleve}',[EleveController::class,'modifier'])->name('edition.eleve');
 
 Route::put('/utilisateur/ed/{user}',[UserController::class,'updat'])->name('user.upgrade');
 
-
+ROUTE::PUT('edit/cour/{cours}',[CourController::class,'updat'])->name('update.cour');
 
 Route::delete('salle/{id}',[CycleController::class,'destroy'])->name('delete.cycle');
 Route::delete('salle/eleve/{id}',[SalleController::class,'destroy'])->name('delete.classe');

@@ -5,16 +5,16 @@
            <table class="table table-striped table-hover" id="example">
                <thead>
                    <tr>
-                       <th>MATRICULE</th>
-                       <th>NOM && PRENOM</th>
-                       <th>TELEPHONE</th>
-                       <th>STATUS</th>
-                       <th>SEXE</th>
-                       <th>CLASSE</th>
-                       <th>CYCLE</th>
-                       <th>EST INSCRIT</th>
-                       <th>ANNEE SCOLAIRE</th>
-                       <th>DATE DE CREATION</th>
+                       <th>matricule</th>
+                       <th>nom et prenom</th>
+                     
+                       <th>status</th>
+                       <th>sexe</th>
+                       <th>classe</th>
+                       <th>cycle</th>
+                       <th>est inscrit</th>
+                       <th>année scolaire</th>
+                      
                        <th>Opération</th>
                    </tr>
                </thead>
@@ -27,12 +27,7 @@
                            <td>SEC{{ $eleves->id }}</td>
                            <td>{{ $eleves->nom }} {{ $eleves->prenom }}</td>
 
-                           <td>
-                               @if ($eleves->telephone1 == null)
-                                   {{ $eleves->telephone2 }}
-                               @else
-                                   {{ $eleves->telephone1 }}
-                           </td>
+                          
                            <td>
                                @if ($eleves->salle_id != null)
                                    <p class="badge badge-success">ACTIF</p>
@@ -41,7 +36,7 @@
                                @endif
 
                            </td>
-                   @endif
+                  
 
                    <td>
                        @if ($eleves->sexe == 0)
@@ -61,7 +56,7 @@
                    </td>
 
                    <td>{{ $eleves->annee->libelle ?? '' }}</td>
-                   <td>{{ $eleves->created_at }}</td>
+                   
                    <td>
                        <a href="{{ route('edit.eleve', $eleves->id) }}" class="btn btn-primary">
                            <i class="fa fa-eye fa-2x"> </i>

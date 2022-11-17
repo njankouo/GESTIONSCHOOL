@@ -189,23 +189,25 @@
                                         <td>{{ optional($sall->niveau)->libelle }}</td>
                                         <td>{{ $sall->enseignant->nom }} {{ $sall->enseignant->prenom }}</td>
                                         <td>
-                                            @if (count($sall->eleve))
-                                            @else
-                                                <form action="{{ route('delete.classe', $sall->id) }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit"
-                                                        class="btn btn-danger show_confirm"data-toggle="tooltip"
-                                                        title='Delete'>
-                                                        <i class="fa fa-minus-circle fa-2x"></i>
 
-                                                    </button>
-                                                </form>
-                                                <button type="submit" class="btn btn-primary  my-2">
-                                                    <i class="fa fa-pencil-square fa-2x"></i>
+                                            <form action="{{ route('delete.classe', $sall->id) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit"
+                                                    class="btn btn-danger show_confirm"data-toggle="tooltip" title='Delete'>
+                                                    <i class="fa fa-minus-circle fa-2x"></i>
 
                                                 </button>
-                                            @endif
+                                            </form>
+                                            <a href="{{ route('note.eleve', $sall->id) }}" class="btn btn-primary  my-2">
+                                                <i class="fa fa-pencil-square fa-2x"></i>
+
+                                            </a>
+                                            <a href="" class="btn btn-success  my-2">
+                                                <i class="fa fa-file fa-2x"></i>
+
+                                            </a>
+
 
                                         </td>
                                     </tr>

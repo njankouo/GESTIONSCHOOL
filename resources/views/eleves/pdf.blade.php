@@ -124,29 +124,32 @@
 
     <div class="container">
         <div class="row text-center">
+            <div>
 
-            <img src="data:images/jpg;base64,<?php echo base64_encode(file_get_contents('images/logo/img10.jpg')); ?>" style="float: right;" class="logo">
+                <img src="data:images/jpg;base64,<?php echo base64_encode(file_get_contents('images/logo/national.png')); ?>" class="logo"
+                    style="float: right;width:200px;height:100px;margin:25px">
 
-            <h6><strong>BP: LOGBOPALION</strong></h6>
+            </div>
+
+
+            <img src="data:images/jpg;base64,<?php echo base64_encode(file_get_contents('images/logo/img10.jpg')); ?>" class="logo"
+                style="float: right;width:200px;height:150px;margin:15px">
+
             <h6>EMAIL: dairounjankouo2019@gmail.com</h6>
             <h6>TEL: (+ 237) 699 072 561</h6>
             <h6>ANNEE SCOLAIRE: 2021-2022</h6>
-            <h6>
 
-            </h6>
         </div>
-        <h6 style="font-size: 25px;font-style:italic;font-weight: bold;text-align:center ">
+        <h6 style="font-size: 25px;font-style:italic;font-weight: bold;margin:55px;">
             LISTE DES ELEVES
         </h6>
-        <h6 style="font-style: italic;font-weight:bold;margin-left:25px">NOMBRE DE FILLE(S): {{ $elevef }}</h6>
-        <h6 style="font-style: italic;font-weight:bold;margin-left:25px;">NOMBRE DE GARCON(S) :{{ $elevem }}</h6>
         <div id="inventory-invoice">
 
             <div class="invoice overflow-auto">
                 <div>
                     <main>
 
-                        <table class="table  text-center" style="margin-left:28px ">
+                        <table class="table  text-center" style="margin-left:48px ">
                             <thead class="text-dark">
                                 <tr>
                                     <th>NOM && PRENOM</th>
@@ -159,30 +162,32 @@
                             </thead>
                             <tbody style="font-size: 15px">
                                 @foreach ($eleve as $eleves)
-                                    @if (!$eleves->annee_id)
-                                        <tr>
-                                            <td>{{ $eleves->nom }} {{ $eleves->prenom }}</td>
-                                            <td>{{ $eleves->date_naissance }}</td>
-                                            <td>{{ $eleves->sexe }}</td>
-                                            <td>{{ $eleves->telephone1 }}</td>
-                                            <td>{{ $eleves->salle->libelle ?? '' }}</td>
-                                        </tr>
-                                    @endif
+                                    {{-- @if (!$eleves->annee_id) --}}
+                                    <tr>
+                                        <td>{{ $eleves->nom }} {{ $eleves->prenom }}</td>
+                                        <td>{{ $eleves->date_naissance }}</td>
+                                        <td>{{ $eleves->sexe }}</td>
+                                        <td>{{ $eleves->telephone1 }}</td>
+                                        <td>{{ $eleves->salle->libelle ?? '' }}</td>
+                                    </tr>
+                                    {{-- @endif --}}
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
 
-                                </tr>
-
-                            </tfoot>
-                            </tbody>
                         </table>
                     </main>
+                    <hr>
                     <footer style="font-size: 15px">
+                        <h6 style="font-style: italic;font-weight:bold;margin-left:25px">
+                            NOMBRE DE FILLE(S):
+                            {{ $elevef }} &nbsp;
+                            NOMBRE DE GARCON(S) :
+                            {{ $elevem }}</h6>
                         APPLICATION DE GESTION ETABLISSEMENT SCOLAIRE.
                         TEL: (+ 237) 699072561.
                         SITE WEB: .....
+
+
                     </footer>
                 </div>
             </div>
