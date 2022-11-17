@@ -54,9 +54,10 @@
                 <a href="#apps" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
                         class="fa fa-object-group blue2_color"></i> <span>Cours</span></a>
                 <ul class="collapse list-unstyled" id="apps">
-                    <li><a href="email.html"><i class="fa fa-sort"></i> <span>Email</span></a></li>
-                    <li><a href="calendar.html"><i class="fa fa-sort"></i> <span>Calendar</span></a></li>
-                    <li><a href="media_gallery.html"><i class="fa fa-sort"></i> <span>Media Gallery</span></a></li>
+                    <li><a href="{{ route('cours.liste') }}"><i class="fa fa-sort"></i> <span>Liste des Cours</span></a>
+                    </li>
+                    {{-- <li><a href="calendar.html"><i class="fa fa-sort"></i> <span>Calendar</span></a></li>
+                    <li><a href="media_gallery.html"><i class="fa fa-sort"></i> <span>Media Gallery</span></a></li> --}}
                 </ul>
             </li>
             <li><a href="{{ route('enseignant') }}"><i class="fa fa-briefcase blue1_color"></i> <span>Enseignants
@@ -90,8 +91,9 @@
             </li>
             <li><a href="{{ route('contrat.index') }}"><i class="fa fa-pencil-square-o"></i> <span>Contrats</span></a>
             </li>
-
-            <li><a href="{{ route('note.index') }}"><i class="fa fa-map purple_color2"></i> <span>Notes</span></a></li>
+            <li><a href="{{ route('index.examen') }}"><i class="fa fa-pencil green_color"></i> <span>Examens</span></a>
+            </li>
+            <li><a readonly><i class="fa fa-map purple_color2"></i> <span>Notes</span></a></li>
             <li><a href="{{ route('sanction.index') }}"><i class="fa fa-bar-chart-o green_color"></i>
                     <span>Sanctions</span></a></li>
             <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a>

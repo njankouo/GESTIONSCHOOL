@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -44,13 +45,25 @@ class UserController extends Controller
                 ]);
                 return back()->with('success','');
     }
-    public function modifier(Request $request, User $user){
-         if ($request->ajax()) {
-           $user->update([
-            'nom'=>$request->nom,
-           ]);
 
-            return response()->json(['success' => true]);
+
+    public function modifier(Request $request){
+         if ($request->ajax()) {
+          if($request->action=='Edit'){
+                $data=array(
+                    'nom'=>$request->nom,
+                    'email'=>$request->email,
+
+                    'telephone' =>$request->telephone,
+                    'password' =>$request->password_hash($_POST['password']),
+                );
+                DB::table('users')->where('id',$request->id)->update($data);
+          }
+          if($request->action=='delete'){
+            DB::table('users')->where('id',$request->id)->delete();
+          }
+
+            return request()->json($request);
         }
     }
 }
